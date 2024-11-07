@@ -8,10 +8,10 @@ import Styles from "../styles/itemdetail.module.css"
 const ItemDetail = ({ product }) => {
     const {addCart} = useContext(Cart)
     const [itemCountVisibility, setItemCountVisibility] = useState(true)
-    console.log(product)
+   
 
     const handleCart = (quantity) => {
-        console.log(quantity)
+       
         setItemCountVisibility(false)
         addCart(product, quantity)
     }

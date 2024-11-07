@@ -17,14 +17,6 @@
   },
   {
     "id": 3,
-    "title": "Smart TV 4K",
-    "description": "Televisor inteligente 4K UHD de 55 pulgadas con HDR y compatibilidad con apps.",
-    "price": 999.99,
-    "category": "consolas",
-    "pictureUrl": "https://via.placeholder.com/400x400?text=Smart+TV+4K"
-  },
-  {
-    "id": 4,
     "title": "Auriculares Inalámbricos",
     "description": "Auriculares Bluetooth con cancelación de ruido y batería de 30 horas.",
     "price": 199.99,
@@ -32,7 +24,7 @@
     "pictureUrl": "https://via.placeholder.com/400x400?text=Auriculares"
   },
   {
-    "id": 5,
+    "id": 4,
     "title": "Tablet Pro",
     "description": "Pantalla de 11 pulgadas, 256GB de almacenamiento y procesador de última generación.",
     "price": 849.99,
@@ -40,7 +32,7 @@
     "pictureUrl": "https://via.placeholder.com/400x400?text=Tablet+Pro"
   },
   {
-    "id": 6,
+    "id": 5,
     "title": "Reloj Inteligente",
     "description": "Monitor de salud, GPS y resistencia al agua hasta 50 metros.",
     "price": 249.99,
@@ -48,7 +40,7 @@
     "pictureUrl": "https://via.placeholder.com/400x400?text=Reloj+Inteligente"
   },
   {
-    "id": 7,
+    "id": 6,
     "title": "Cámara Profesional",
     "description": "Resolución 24MP, grabación 4K y lente intercambiable.",
     "price": 1499.99,
@@ -56,27 +48,12 @@
     "pictureUrl": "https://via.placeholder.com/400x400?text=Cámara+Profesional"
   },
   {
-    "id": 8,
+    "id": 7,
     "title": "Consola de Videojuegos",
     "description": "Soporta juegos 4K, 1TB de almacenamiento y retrocompatibilidad.",
     "price": 499.99,
     "category": "consolas",
     "pictureUrl": "https://via.placeholder.com/400x400?text=Consola"
-  },
-  {
-    "id": 9,
-    "title": "Altavoz Inteligente",
-    "description": "Control por voz, compatible con asistentes virtuales y sonido 360 grados.",
-    "price": 129.99,
-    "category": "accesorios",
-    "pictureUrl": "https://via.placeholder.com/400x400?text=Altavoz+Inteligente"
-  },
-  {
-    "id": 10,
-    "title": "Cargador Rápido USB-C",
-    "description": "Carga rápida de 45W, compatible con smartphones y tablets.",
-    "price": 39.99,
-    "category": "accesorios",
-    "pictureUrl": "https://via.placeholder.com/400x400?text=Cargador+Rápido"
   }
+ 
 ]

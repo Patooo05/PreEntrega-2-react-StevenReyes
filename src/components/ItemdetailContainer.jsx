@@ -1,32 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import products from '../assets/mockData.json';
-import ItemDetail from './ItemDetail';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react"
+import products from "../assets/mockData.json"
+import ItemDetail from "./ItemDetail"
+import { useParams } from "react-router-dom"
+import { doc, getDoc } from "firebase/firestore"
+import { db } from "../firebase/config"
 
+const ItemDetailContainer = () => { 
+    const [product, setProduct] = useState(null)
+    const {id} = useParams()
 
+    useEffect(() => {
 
+        (async ()=> {
 
-const ItemDetailContainer = () => {
-  const [product, setProduct] = useState(null); 
-  const { id } = useParams(); 
+            try {
+                const docRef = doc(db, "products", id);
+                const docSnap = await getDoc(docRef);
+        
+                if (docSnap.exists()) {
+                   
+                    setProduct({...docSnap.data(), id})
+                } else {
+                // docSnap.data() will be undefined in this case
+                    alert("No such document!");
+                }
+                
+            } catch (error) {
+                
+            }
+        })()
 
-  
-useEffect(() => {
-  products.forEach((product) => {
-    console.log('Producto:', product);
-  });
-}, []);
+        /* const productFound = products.find(product => product.id === Number(id))
+        setProduct(productFound) */
+    }, [id])
 
-  useEffect(() => {
-    // Buscamos el producto que coincide con el ID de la URL
-    const product = products.find(productToFind => productToFind.id === Number(id));
+    return product && <ItemDetail product={product}/>
+}
 
-      setProduct(product)
-    },[id])
-  
-  if (!product) return <p>Cargando producto...</p>;
-
-  return < ItemDetail product={product} />; // Renderizamos 
-};
-
-export default ItemDetailContainer;
+export default ItemDetailContainer

@@ -1,50 +1,52 @@
-import React, { useEffect, useState } from "react"; // Importar React y hooks
-import mockProducts from "../assets/mockData.json"; // Importar datos de productos mock
-import ItemList from "./ItemList"; // Importar componente que muestra la lista de productos
-import { useParams } from "react-router-dom"; // Importar hook para obtener parámetros de la URL
+import React, { useEffect, useState } from "react";
+import ItemList from "./ItemList";
+import { useParams } from "react-router-dom";
+import { db } from "../firebase/config";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 const ItemListContainer = () => {
-    const [products, setProducts] = useState([]); 
-    const [loading, setLoading] = useState(true); // Inicializar loading como true
-    const { categoryId } = useParams(); // Obtener categoryId de los parámetros de la URL
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);  // Estado para el indicador de carga
+    const { categoryId } = useParams();
 
     useEffect(() => {
-        const promise1 = new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(mockProducts); 
-            }, 2000); // Simular carga de datos
-        });
-
-        const getProducts = async () => {
+        // Función asincrónica para cargar productos
+        const fetchProducts = async () => {
+            setLoading(true);
             try {
-                const products = await promise1; 
-                console.log("All Products:", products); // Debugging: Mostrar todos los productos
-                console.log("Category ID:", categoryId); // Debugging: Mostrar categoryId
-                let productsFiltered;
+                let productsFiltered = [];
 
                 if (categoryId) {
-                    productsFiltered = products.filter((product) => product.category === categoryId);
-                    console.log("Filtered Products:", productsFiltered); // Debugging: Mostrar productos filtrados
+                    const q = query(
+                        collection(db, "products"),
+                        where("category", "==", categoryId)
+                    );
+                    const querySnapshot = await getDocs(q);
+                    querySnapshot.forEach((doc) => {
+                        productsFiltered.push({ id: doc.id, ...doc.data() });
+                    });
                 } else {
-                    productsFiltered = products; 
+                    const querySnapshot = await getDocs(collection(db, "products"));
+                    querySnapshot.forEach((doc) => {
+                        productsFiltered.push({ id: doc.id, ...doc.data() });
+                    });
                 }
-
-                setProducts(productsFiltered); 
-                setLoading(false); 
+                setProducts(productsFiltered);
             } catch (error) {
-                console.error("Error fetching products:", error); 
-                setLoading(false); 
+                console.error("Error al cargar productos:", error);
+            } finally {
+                setLoading(false);  
             }
         };
 
-        getProducts(); 
-    }, [categoryId]); 
+        fetchProducts();
+    }, [categoryId]);
 
     if (loading) {
-        return <p>Cargando productos...</p>; 
+        return <p>Cargando productos...</p>;
     }
 
-    return <ItemList products={products} />; // Renderizar la lista de productos
-}
+    return <ItemList products={products} />;
+};
 
-export default ItemListContainer; // Exportar el componente
+export default ItemListContainer;
