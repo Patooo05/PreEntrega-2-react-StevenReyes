@@ -1,5 +1,10 @@
 import React, {useEffect, useRef}  from 'react'
 
+import Styles from"../styles/counterwithref.module.css"
+
+
+
+
 const CounterWithRef = () => {
 
     const refCount = useRef= (0 )
@@ -12,11 +17,13 @@ const CounterWithRef = () => {
 
     }
   return (
-    <div>
-      <span>Counter With State</span>
-      <button onClick={onAdd}>Add 1</button> 
-      <span>{refCount.current}</span> 
-    </div>
+    <div className={Styles["counter-container" ]}>
+    <span>Counter With State</span>
+    <br />
+    <button onClick={onAdd}>Add 1</button>
+    <span>{refCount.current}</span>
+  </div>
+  
   )
 }
 

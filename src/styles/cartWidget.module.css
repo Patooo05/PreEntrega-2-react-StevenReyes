@@ -1,0 +1,27 @@
+.cartWidget {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    position: relative;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.cartWidget img {
+    width: 40px;
+    margin-right: 8px; /* Espacio entre la imagen y el texto */
+}
+
+.cartCount {
+    
+    background-color: #5c0708;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transform: translate(50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

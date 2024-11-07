@@ -1,0 +1,46 @@
+/* Estilos para el contenedor del menú */
+ul {
+  list-style: none; 
+  display: flex; 
+  justify-content: center; 
+  background-color: #333; 
+  padding: 1rem 2rem; /* Mayor espacio en padding */
+  margin: 0; 
+}
+
+/* Estilos para los elementos li */
+ul li {
+  margin: 0 20px;
+  display: flex; 
+  justify-content: center; 
+  padding: 1rem 1rem; /* Espacio adicional entre los elementos */
+}
+
+/* Estilos para los enlaces */
+ul li a {
+  color: #fff; 
+  text-decoration: none; 
+  font-size: 18px;
+  padding: 12px 25px; /* Ajuste de padding */
+  border-radius: 8px; 
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Añadido efecto transform */
+}
+
+/* Efecto hover */
+ul li a:hover {
+  background-color: #555;
+  color: #ffdd57; 
+  transform: translateY(-2px); /* Leve elevación al hacer hover */
+}
+
+/* Efecto de estilo cuando el enlace está activo */
+.isActive {
+  background-color: #725e0f;
+  color: #ffdd57; /* Color destacado */
+}
+
+/* Opcional: Sombra más suave para el nav */
+nav {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  padding-bottom: 1rem;
+}

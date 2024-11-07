@@ -6,16 +6,14 @@ import Item from './Item'
 
 const ItemList = ( { products } ) => {
   return (
-    <div>
+      <div>
         {products.map((product) => {
             return(
                 <Item item ={product} key={product.id}/> 
-                      )
-   
-  })}
-
-</div>
-  ) 
+                  )
+              })}
+      </div>
+    ) 
 }
 
 export default ItemList

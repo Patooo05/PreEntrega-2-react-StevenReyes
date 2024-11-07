@@ -7,9 +7,8 @@ import { useParams } from 'react-router-dom';
 
 
 const ItemDetailContainer = () => {
-  const [product, setProduct] = useState(null); // Estado del producto
-  const { id } = useParams(); // Obtenemos el ID de la URL
-  
+  const [product, setProduct] = useState(null); 
+  const { id } = useParams(); 
 
   
 useEffect(() => {
@@ -20,16 +19,14 @@ useEffect(() => {
 
   useEffect(() => {
     // Buscamos el producto que coincide con el ID de la URL
-    const foundProduct = products.find(
-      (productToFind) => productToFind.id === Number(id)
-    );
+    const product = products.find(productToFind => productToFind.id === Number(id));
 
-    setProduct(foundProduct); // Actualizamos el estado
-  }, [id]); // Este useEffect se ejecuta cada vez que cambia el ID
+      setProduct(product)
+    },[id])
+  
+  if (!product) return <p>Cargando producto...</p>;
 
-  if (!product) return <p>Cargando producto...</p>; // Control de carga
-
-  return < ItemDetail product={product} />; // Renderizamos el detalle del producto
+  return < ItemDetail product={product} />; // Renderizamos 
 };
 
 export default ItemDetailContainer;
